@@ -7,9 +7,9 @@ const getPark = url =>
     : new Themeparks.Parks.TokyoDisneyResortMagicKingdom();
 
 (async () => {
-  const tdr = getPark('tdr');
+  const tdr = getPark('tdl');
   await fs.writeFile(
-    '/var/www/html/tdr.json',
+    '/var/www/html/tdl.json',
     JSON.stringify(await tdr.GetWaitTimes()),
     () => {}
   );
