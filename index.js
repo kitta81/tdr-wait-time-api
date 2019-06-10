@@ -11,18 +11,16 @@ const getParkObject = parkName =>
     ? new Themeparks.Parks.TokyoDisneyResortDisneySea()
     : new Themeparks.Parks.TokyoDisneyResortMagicKingdom();
 
-(async () => {
-  const tdl = getParkObject(Park.tdl);
+const outputWaitTime = async park => {
+  const parkObject = getParkObject(park);
   await fs.writeFile(
-    '/var/www/html/tdl.json',
-    JSON.stringify(await tdl.GetWaitTimes()),
+    `/var/www/html/${park}.json`,
+    JSON.stringify(await parkObject.GetWaitTimes()),
     () => {}
   );
+};
 
-  const tds = getParkObject(Park.tds);
-  await fs.writeFile(
-    '/var/www/html/tds.json',
-    JSON.stringify(await tds.GetWaitTimes()),
-    () => {}
-  );
+(async () => {
+  await outputWaitTime(Park.tdl);
+  await outputWaitTime(Park.tds);
 })();
