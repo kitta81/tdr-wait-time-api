@@ -12,6 +12,6 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "themeparks": "^4.7.20"
+    "themeparks": "github:obuchi3/themeparks"
   }
 }
